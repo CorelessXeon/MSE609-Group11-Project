@@ -358,3 +358,70 @@ It remains uncertain whether equivalent 3D visualization can be fully reproduced
 **Prepared by:** *Gary (Wentao Zang)*\
 **Course:** *MSE 609 – Quantitative Data Analysis*\
 **Date:** *Midterm Notes – November 10, 2025*
+
+---
+## 4. How to Run the Project (added by Leila)
+
+Anyone can reproduce the analysis using RStudio by following these steps.
+
+### 4.1. Requirements
+- R version ≥ 4.3
+- RStudio Desktop
+- Internet connection (for first-time package installation)
+
+### 4.2. Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/CorelessXeon/MSE609-Group11-Project.git
+or download the ZIP and unzip it locally.
+2. Open the file MSE609-Group11-Project.Rproj in RStudio.
+
+In the Console, install and restore the environment:
+
+r
+Copy code
+
+install.packages("renv")
+renv::restore()
+4.3. Run the full pipeline
+Either source each script in order:
+
+r
+Copy code
+
+source("R/01_data_cleaning.R")
+source("R/02_descriptives_table1_strict.R")
+source("R/03_models_Q40_to_Q43.R")
+source("R/04_export_regression_tables.R")
+# source("R/05_plots_Q40_to_Q43.R")  # for 3D figures when finalized
+
+Or run them all at once (recommended):
+
+r
+Copy code
+
+source("run_all.R")
+
+4.4. Outputs
+
+All generated files appear in the output/ folder:
+
+  - table1_combined_strict.html – Descriptive statistics
+  
+  - tableA1_combined.html – Replicated regression table
+  
+  - models_Q40_to_Q43.rds – Saved model objects
+  
+  - ai_comfort_surface.html – 3D visualization (when ready)
+
+# Clean datasets are saved in data_clean/.
+
+4.5. Notes
+
+  - The dataset used: ATS2021 Dataset_Dataverse posting.RData
+  
+  - Filtering approach: strict (complete-case) for replication consistency.
+  
+  - To test the alternative available-case filtering, edit 01_data_cleaning.R.
+
+✅ After following these steps, the analysis should reproduce all outputs exactly as in the paper.
