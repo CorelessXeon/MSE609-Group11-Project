@@ -356,10 +356,10 @@ mod_q41 <- q41$model
 mod_q42 <- q42$model
 mod_q43 <- q43$model
 dir.create("artifacts/models", recursive = TRUE, showWarnings = FALSE)
-saveRDS(mod_q40, "artifacts/models/q40_model.rds")
-saveRDS(mod_q41, "artifacts/models/q41_model.rds")
-saveRDS(mod_q42, "artifacts/models/q42_model.rds")
-saveRDS(mod_q43, "artifacts/models/q43_model.rds")
+saveRDS(mod_q40, "artifacts/models/q40_olr_model.rds")
+saveRDS(mod_q41, "artifacts/models/q41_olr_model.rds")
+saveRDS(mod_q42, "artifacts/models/q42_olr_model.rds")
+saveRDS(mod_q43, "artifacts/models/q43_olr_model.rds")
 appendix_1A <- dplyr::bind_rows(tbl_q40, tbl_q41, tbl_q42, tbl_q43)
 
 # Keep the CSV as before
