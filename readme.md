@@ -2,9 +2,13 @@
 
 ## 0. Progress Overview
 
-### 0.1. GitHub Repository Setup – 90%
 
--   Missing README usage instructions.
+### 0.1. GitHub Repository Setup – 100%
+
+-   README usage instructions and one-command run (`run_all.R`) added  
+    (Section 4, updated by Leila – Nov 2025).
+
+
 
 ### 0.2. Data Cleaning – 100%
 
@@ -19,9 +23,14 @@
 
 -   In progress.
 
-### 0.5. Replication of Appendix A1 Table 1 – 80%
 
--   In progress, with discrepancies between versions.
+### 0.5. Replication of Appendix A1 Table 1 – 100%
+
+-   Ordinal logistic regression models for Q40–Q43 replicated.
+-   Combined table exported to `output/tableA1_combined.html`.
+-   Remaining differences vs. the published Appendix A1 are documented in  
+    `docs/AppendixA1_Writeup.md` and `docs/Gaps.md` (prepared by Leila).
+
 
 ### 0.6. Integrated Midterm Report – 100%
 
@@ -318,8 +327,19 @@ By contrast, Kai implemented the proper **Ordinal Logistic Regression**, which d
 
 #### Step 2: Table generation (`04_export_regression_tables.R`)
 
-This script converts model outputs into formatted tables for comparison with Appendix A1.\
-However, discrepancies remain: Kai’s regression results still differ from the published Appendix A1 table, indicating further investigation is required to pinpoint the cause.
+This script converts model outputs into formatted tables for comparison with Appendix A1.
+
+At the time of these midterm notes, Kai’s regression results still differed from the
+published Appendix A1 table, and further investigation was required.
+
+🔄 **Update (Nov 2025, Leila):**  
+We re-estimated the models using ordinal logistic regression with strict filtering
+and matched reference categories. The combined table in
+`output/tableA1_combined.html` now closely aligns with the published Appendix A1.
+Remaining small differences in odds ratios and p-values are documented in  
+`docs/AppendixA1_Writeup.md` and `docs/Gaps.md`.
+
+
 
 ------------------------------------------------------------------------
 
@@ -339,12 +359,14 @@ It remains uncertain whether equivalent 3D visualization can be fully reproduced
 -   ✅ Acquired the 2021 ATS health survey dataset.\
 -   ✅ Completed data cleaning workflow and scripts.\
 -   ✅ Successfully replicated descriptive statistics (Table 1).
+-   ✅ Replicated Appendix A1 (ordinal logistic regression) and documented discrepancies (Leila, Nov 2025).
+
 
 ### 3.2. Issues to Resolve
 
 -   🔹 Understand the methodological differences between the two data filtering strategies.\
 -   🔹 Compare and analyze the discrepancy between two modeling approaches (GLM vs. Ordinal Logistic).\
--   🔹 Identify why Kai’s regression results differ from the paper’s Appendix A1 table.\
+-   🔹 Communicate and summarize the documented differences between our models and the published Appendix A1 (see `docs/Gaps.md`).
 -   🔹 Optimize variable naming and file output structure.
 
 ### 3.3. Next Steps
@@ -360,68 +382,70 @@ It remains uncertain whether equivalent 3D visualization can be fully reproduced
 **Date:** *Midterm Notes – November 10, 2025*
 
 ---
+---
+
 ## 4. How to Run the Project (added by Leila)
 
 Anyone can reproduce the analysis using RStudio by following these steps.
 
 ### 4.1. Requirements
-- R version ≥ 4.3
-- RStudio Desktop
-- Internet connection (for first-time package installation)
+
+-   🔹R version ≥ 4.3
+
+-   🔹RStudio Desktop
+
+-   🔹Internet connection (for first-time package installation)
 
 ### 4.2. Setup
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/CorelessXeon/MSE609-Group11-Project.git
-or download the ZIP and unzip it locally.
-2. Open the file MSE609-Group11-Project.Rproj in RStudio.
 
-In the Console, install and restore the environment:
+-   🔹Clone the repository:
 
-r
-Copy code
+  git clone https://github.com/CorelessXeon/MSE609-Group11-Project.git
 
-install.packages("renv")
-renv::restore()
-4.3. Run the full pipeline
-Either source each script in order:
+  or download the ZIP from GitHub and unzip it locally.
 
-r
-Copy code
+-   🔹Open the file MSE609-Group11-Project.Rproj in RStudio.
 
-source("R/01_data_cleaning.R")
-source("R/02_descriptives_table1_strict.R")
-source("R/03_models_Q40_to_Q43.R")
-source("R/04_export_regression_tables.R")
-# source("R/05_plots_Q40_to_Q43.R")  # for 3D figures when finalized
+-   🔹In the R console, install and restore the project environment:
 
-Or run them all at once (recommended):
+  install.packages("renv")   # only if not already installed
+  renv::restore()            # installs the package versions from renv.lock
 
-r
-Copy code
+### 4.3. Run the full pipeline
 
-source("run_all.R")
+#### Option A – step by step
 
-4.4. Outputs
+  source("R/01_data_cleaning.R")
+  source("R/02_descriptives_table1_strict.R")
+  source("R/03_models_Q40_to_Q43.R")
+  source("R/04_export_regression_tables.R")
+  # source("R/05_plots_Q40_to_Q43.R")  # enable when 3D figures are finalized
 
-All generated files appear in the output/ folder:
 
-  - table1_combined_strict.html – Descriptive statistics
-  
-  - tableA1_combined.html – Replicated regression table
-  
-  - models_Q40_to_Q43.rds – Saved model objects
-  
-  - ai_comfort_surface.html – 3D visualization (when ready)
+#### Option B – recommended (one command)
 
-# Clean datasets are saved in data_clean/.
+  source("run_all.R")
 
-4.5. Notes
+### 4.4. Outputs
 
-  - The dataset used: ATS2021 Dataset_Dataverse posting.RData
-  
-  - Filtering approach: strict (complete-case) for replication consistency.
-  
-  - To test the alternative available-case filtering, edit 01_data_cleaning.R.
+All generated files appear in the output/ folder, for example:
 
-✅ After following these steps, the analysis should reproduce all outputs exactly as in the paper.
+- 🔹table1_combined_strict.html – Descriptive statistics
+
+- 🔹tableA1_combined.html – Replicated regression table (Appendix A1)
+
+- 🔹models_Q40_to_Q43.rds – Saved model objects
+
+- 🔹ai_comfort_surface.html – 3D visualization (when ready)
+
+Clean datasets are saved in the data_clean/ folder.
+
+### 4.5. Notes
+
+- 🔹Dataset used: data_raw/ATS2021 Dataset_Dataverse posting.RData
+
+- 🔹Filtering approach: strict (complete-case) for replication consistency.
+
+- 🔹To test the alternative available-case filtering, edit R/01_data_cleaning.R.
+
+✅ After following these steps, the analysis should reproduce all current outputs.
