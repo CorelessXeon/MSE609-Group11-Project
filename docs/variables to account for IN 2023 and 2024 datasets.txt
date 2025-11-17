@@ -1,0 +1,15 @@
+2024
+
+Q28_A1  knowledge about AI
+Q28_A3  comfortable AI used in healthcare
+Q28_A5 Q42
+Q28_A6: The use of AI by health care providers improves my confidence in my disease diagnosis. - Please indicate your level of agreement with the following statements. #interesting to look at
+
+Q28_A1 - Q28_A7 + Q29 - Q37
+
+
+2023
+Q31  knowledge about AI
+Q32  comfortable with AI used in healthcare
+Q33  Q42
+Q34  Q43

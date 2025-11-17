@@ -1,4 +1,4 @@
-Factor,Age Category (Code),Sample Size (Male - 1),Sample Size (Female - 2),Sample Size (Other - 3)
+Factor,Category (Code),Sample Size (male),Sample Size (female),Sample Size (other)
 Age in years,16–24 years (1),292,622,32
 Age in years,25–34 years (2),737,951,20
 Age in years,35–44 years (3),965,945,21

@@ -207,7 +207,7 @@ stopifnot(is.factor(model_df$gender), is.factor(model_df$education), is.factor(m
 # reshape into the paper’s sectioned layout with reference rows.
 
 # ---------- PATCH: fit_polr_table with treatment contrasts for age ----------
-fit_polr_table <- function(df, yvar_chr) {
+fit_polr_model <- function(df, yvar_chr) {
   # Drop rows where THIS outcome is NA (per paper)
   df_use <- df %>% tidyr::drop_na(dplyr::all_of(yvar_chr))
   
@@ -405,4 +405,4 @@ appendix_1A_gt <- appendix_1A_final %>%
 # Save the final HTML report and CSV
 gt::gtsave(appendix_1A_gt, "artifacts/tables/appendix_table_1A_replication.html")
 readr::write_csv(appendix_1A_final, "artifacts/tables/appendix_table_1A_replication.csv")
-readr::write_csv(model_df, "model_df.csv")
+readr::write_csv(model_df, "data_clean/model_df.csv")
