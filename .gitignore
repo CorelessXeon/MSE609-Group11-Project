@@ -4,14 +4,8 @@
 # R
 .Rhistory
 .Rproj.user/
-.RData
 .Ruserdata
 .Rprofile
-
-
-# data
-*.sav
-*.tab
 
 # outputs
 output/
